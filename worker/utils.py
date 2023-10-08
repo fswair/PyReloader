@@ -182,9 +182,7 @@ class Reloader:
                     file.status = FileEnums.CREATED
 
                     current = file.get(where=dict(name=file.name))
-                    print(file_stat.st_mtime, current.modified_unix)
                     if file_stat.st_mtime != current.modified_unix:
-                        print(714)
                         if current.id:
                             file.update()
                         else:
