@@ -1,9 +1,7 @@
 from MentoDB import Mento, MentoConnection
-from worker.models import FileModel
+from .models import FileModel
 
-connection = MentoConnection("./worker/database/local.db")
+connection = MentoConnection("./worker/local.db")
 
-db = Mento(connection, default_table="files", check_model=FileModel)
-
-db.create(model=FileModel)
-#
+db = Mento(connection, check_model=FileModel)
+db.create("files", model=FileModel)

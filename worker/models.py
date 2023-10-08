@@ -1,14 +1,14 @@
-from MentoDB import BaseModel, dataclass, PrimaryKey, UniqueMatch
-
+from MentoDB import BaseModel, PrimaryKey, UniqueMatch
+from dataclasses import dataclass
 
 @dataclass
-class FileModel(BaseModel):
+class FileModel:
     id: int
     size: int
     directory: str
-    name: PrimaryKey(str).set_primary()
+    name: PrimaryKey(str)
     created_unix: int
     modified_unix: int
     status: str
     # unique constraint
-    unique_match: UniqueMatch("name", "id").set_match()
+    unique_match: UniqueMatch("name", "id")
